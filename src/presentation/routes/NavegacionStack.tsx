@@ -16,10 +16,14 @@ const NavegacionStack = () => {
     <Stack.Navigator
     
     >
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Archivos" component={Archivos} />
-      <Stack.Screen name="Archivo" component={Archivo} />
-      <Stack.Screen name="Nuevo" component={Nuevo} />
+      <Stack.Screen name="Home" component={Home} 
+      options={{title:'INICIO'}} />
+      <Stack.Screen name="Archivos" component={Archivos}
+      options={{title:'Historial'}} />
+      <Stack.Screen name="Archivo" component={Archivo} 
+      options={{title:'Archivo'}}/>
+      <Stack.Screen name="Nuevo" component={Nuevo} 
+      options={{title:'Nuevo'}}/>
      
 
     </Stack.Navigator>
