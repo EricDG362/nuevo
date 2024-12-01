@@ -8,6 +8,8 @@ import Archivos from './src/presentation/screens/archivos/Archivos';
 import Nuevo from './src/presentation/screens/archivos/Nuevo';
 import FormularioModal from './src/presentation/screens/login/FormularioModal';
 import NavegacionStack from './src/presentation/routes/NavegacionStack';
+import NavegacionTop from './src/presentation/routes/NavegacionTop';
+import { SafeAreaView } from 'react-native';
 
 
 
@@ -15,13 +17,16 @@ const App = () => {
 
 
   return (
+    
     <NavigationContainer>
-
       
-      <NavegacionStack />
+
+      <NavegacionTop />
+      
       
       
       </NavigationContainer>
+      
     
   );
 };

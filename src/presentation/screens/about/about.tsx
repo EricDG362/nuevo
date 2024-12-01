@@ -1,13 +1,13 @@
 import React from 'react'
 import {Text} from 'react-native'
 
-const about = () => {
+const About = () => {
   return (
 
 
     
-    <Text>about</Text>
+    <Text>desde about</Text>
   )
 }
 
-export default about
+export default About
