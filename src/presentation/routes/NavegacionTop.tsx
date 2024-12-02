@@ -13,11 +13,18 @@ const NavegacionTop = () => {
 
   return (
     
-    <Tab.Navigator>
+    <Tab.Navigator
+    screenOptions={{
+      tabBarStyle: { backgroundColor: '#0E3194' }, // Color de fondo de la barra
+      tabBarLabelStyle: { color: '#FFFFFF' }, // Color del texto de las etiquetas
+      tabBarActiveTintColor: '#FFFFFF', // Color del ítem activo
+      tabBarInactiveTintColor: '#FFFFFF', // Color del ítem inactivo (opcional, si quieres el mismo)
+    }}
+    >
 
-      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Entrada" component={Home} />
       
-      <Tab.Screen name="About" component={About} />
+      <Tab.Screen name="Procedimientos" component={About} />
 
     </Tab.Navigator>
     

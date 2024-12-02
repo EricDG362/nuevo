@@ -4,14 +4,17 @@ import {
   ImageBackground, StyleSheet, Platform, Keyboard, Pressable, View,
 } from 'react-native';
 
+import { Toast } from 'native-base'
+
 import FormularioModal from './FormularioModal';
+import { StackActions, useNavigation } from '@react-navigation/native';
 
 
 
 const Login = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false)
 
-
+const navi = useNavigation()
 
 
   return (
@@ -42,7 +45,7 @@ const Login = () => {
           <Pressable
             style={estilo.boton}
             onPress={() => {
-              console.log('presionaste el boton');
+              navi.dispatch(StackActions.replace('NavegacionTop'));
             }}
           >
             <Text style={estilo.botontext}>INGRESAR</Text>
