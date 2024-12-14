@@ -3,6 +3,7 @@ import Home from '../screens/home/Home';
 
 
 import About from '../screens/about/About';
+import Archivos from '../screens/archivos/Archivos';
 
 
 const Tab = createMaterialTopTabNavigator();
@@ -24,7 +25,7 @@ const NavegacionTop = () => {
 
       <Tab.Screen name="Entrada" component={Home} />
       
-      <Tab.Screen name="Procedimientos" component={About} />
+      <Tab.Screen name="Procedimientos" component={Archivos} />
 
     </Tab.Navigator>
     

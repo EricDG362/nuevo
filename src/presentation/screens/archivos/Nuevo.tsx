@@ -1,3 +1,4 @@
+import { StackActions, useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import {
     Keyboard, SafeAreaView, StyleSheet, Text, TouchableWithoutFeedback,
@@ -12,7 +13,7 @@ const Nuevo = () => {
     const [sumario, setSumario] = useState('')
     const [proce, setProce] = useState('')
 
-
+const navi = useNavigation()
 
     const guardarProce = () =>{
         
@@ -69,7 +70,7 @@ const Nuevo = () => {
 
                 <Pressable //boton cancelar
                     style={[e.boton, , e.btnCancelar]}
-                    onPress={ () => {}}
+                    onPress={ () => navi.dispatch(StackActions.pop(1))} //retropcede una pantalla atras (1)
                 >
                     <Text style={[e.BotonText]}>CANCELAR</Text>
                 </Pressable>
