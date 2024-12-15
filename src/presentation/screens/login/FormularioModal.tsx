@@ -20,6 +20,21 @@ const FormularioModal = ({ modalVisible, setModalVisible }: FormularioModalProps
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  //satet 
+  const [mensaje,setMensaje] = useState (null)
+
+
+  //envia el formulario
+ const  handleSubmit = () =>{
+
+  //validar campos
+  if(nombre ==="" || apellido==="" || email==="" || password===""){
+
+  //password 6 caracteres
+
+  //guardar usuario
+
+ }
 
 
 
@@ -43,17 +58,17 @@ const FormularioModal = ({ modalVisible, setModalVisible }: FormularioModalProps
               <TextInput
                 style={estilo.input}
                 value={nombre}
-                onChangeText={setNombre}
+                onChangeText={text =>setNombre (text)}
 
               />
             </View>
-
+          
             <View style={estilo.campo}>
               <Text style={estilo.label} >APELLIDO</Text>
               <TextInput
                 style={estilo.input}
                 value={apellido}
-                onChangeText={setApellido}
+                onChangeText={text =>setApellido (text)}
               />
             </View>
 
@@ -62,7 +77,7 @@ const FormularioModal = ({ modalVisible, setModalVisible }: FormularioModalProps
               <TextInput
                 style={estilo.input}
                 value={email}
-                onChangeText={setEmail}
+                onChangeText={text =>setEmail (text)}
               />
             </View>
 
@@ -71,11 +86,12 @@ const FormularioModal = ({ modalVisible, setModalVisible }: FormularioModalProps
               <TextInput
                 style={estilo.input}
                 value={password}
-                onChangeText={setPassword}
+                onChangeText={text =>setPassword (text)}
               />
               
               <Pressable //boton crear
                 style={estilo.boton}
+                onPress={ () => handleSubmit ()}
               >
                 <Text style={estilo.BotonText}>CREAR CUENTA</Text>
               </Pressable>
@@ -150,4 +166,6 @@ const estilo = StyleSheet.create({
   },
 })
 
+
+}
 export default FormularioModal
