@@ -1,9 +1,14 @@
-/**
- * @format
- */
-
-import {AppRegistry} from 'react-native';
+import React from 'react';
+import { AppRegistry } from 'react-native';
 import App from './App';
-import {name as appName} from './app.json';
+import client from './config/apollo';
+import { name as appName } from './app.json';
+import {ApolloProvider } from '@apollo/client';
 
-AppRegistry.registerComponent(appName, () => App);
+const Sumary = () => (
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>
+);
+
+AppRegistry.registerComponent(appName, () => Sumary);

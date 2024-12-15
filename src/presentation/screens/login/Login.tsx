@@ -3,19 +3,15 @@ import {
   Text, TextInput, TouchableWithoutFeedback, KeyboardAvoidingView,
   ImageBackground, StyleSheet, Platform, Keyboard, Pressable, View,
 } from 'react-native';
-
-import { Toast } from 'native-base'
-
-import FormularioModal from './FormularioModal';
 import { StackActions, useNavigation } from '@react-navigation/native';
 
-
+import FormularioModal from './FormularioModal';
 
 const Login = () => {
-  const [modalVisible, setModalVisible] = useState<boolean>(false)
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [secureTextEntry, setSecureTextEntry] = useState(true); // Estado para manejar la visibilidad de la contraseña
 
-const navi = useNavigation()
-
+  const navi = useNavigation();
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -32,15 +28,25 @@ const navi = useNavigation()
             style={[estilo.input, estilo.inputPrime]}
             placeholder="EMAIL"
             placeholderTextColor={'#000'}
-            keyboardType='email-address'
+            keyboardType="email-address"
           />
 
-          <TextInput
-            style={[estilo.input]}
-            placeholder="PASSWORD"
-            placeholderTextColor={'#000'}
-            secureTextEntry={true} // Esto oculta el texto
-          />
+          <View style={estilo.inputContainer}>
+            <TextInput
+              style={[estilo.input, estilo.inputPassword]}
+              placeholder="PASSWORD"
+              placeholderTextColor={'#000'}
+              secureTextEntry={secureTextEntry} // Cambia dinámicamente según el estado
+            />
+            <Pressable
+              style={estilo.toggleButton}
+              onPress={() => setSecureTextEntry(!secureTextEntry)} // Alterna entre visible y oculto
+            >
+              <Text style={estilo.toggleButtonText}>
+                {secureTextEntry ? '👁️' : '🙈'}
+              </Text>
+            </Pressable>
+          </View>
 
           <Pressable
             style={estilo.boton}
@@ -51,40 +57,34 @@ const navi = useNavigation()
             <Text style={estilo.botontext}>INGRESAR</Text>
           </Pressable>
 
-          {/* Contenedor que alinea el texto y el botón */}
           <View style={estilo.padre}>
             <Text style={estilo.text}>Si no posees una cuenta. </Text>
-            <Pressable
-              onPress={() => { setModalVisible(true) }}>
+            <Pressable onPress={() => setModalVisible(true)}>
               <Text style={[estilo.text, estilo.textcreate]}>CREAR UNA CUENTA</Text>
             </Pressable>
           </View>
 
           <FormularioModal
-
             modalVisible={modalVisible}
             setModalVisible={setModalVisible}
-
           />
-
-
         </ImageBackground>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );
-}
+};
 
 const estilo = StyleSheet.create({
   container: {
-    flex: 1, // Mantén el 100% de la pantalla
+    flex: 1,
   },
   background: {
-    flex: 1, // Hace que la imagen de fondo ocupe todo el espacio disponible
-    justifyContent: 'center', // Alinea el contenido verticalmente
-    alignItems: 'center', // Alinea el contenido horizontalmente
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   input: {
-    backgroundColor: 'rgba(255, 255, 255, 0.5)', // Blanco con 70% de opacidad
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
     borderRadius: 15,
     width: '80%',
     height: 35,
@@ -92,16 +92,31 @@ const estilo = StyleSheet.create({
     marginBottom: 20,
     textAlign: 'center',
     color: '#fff',
-    fontWeight: 700,
-
-
+    fontWeight: '700',
   },
   inputPrime: {
-    marginTop: 450, // Puedes ajustar esto según el espacio necesario
+    marginTop: 450,
+  },
+  inputContainer: {
+    position: 'relative',
+    width: '80%',
+    marginBottom: 20,
+  },
+  inputPassword: {
+    paddingRight: 40, // Espacio para el botón
+  },
+  toggleButton: {
+    position: 'absolute',
+    right: 10, // Posiciona el botón dentro del input
+    top: 5, // Ajusta la posición vertical del botón
+  },
+  toggleButtonText: {
+    fontSize: 18,
+    color: '#000',
   },
   text: {
     color: '#ffff',
-    marginTop: 40, // Asegúrate de que este margen no se apile innecesariamente
+    marginTop: 40,
   },
   boton: {
     backgroundColor: '#ffff',
@@ -111,20 +126,17 @@ const estilo = StyleSheet.create({
   },
   botontext: {
     textAlign: 'center',
-    fontWeight: 900
-
+    fontWeight: '900',
   },
-  // Alineación horizontal y centrado para el texto y el botón de "Crear cuenta"
   padre: {
-    display: 'flex',
-    flexDirection: 'row', // Esto pone el texto y el botón en una fila
-    alignItems: 'center', // Centra verticalmente
-    justifyContent: 'center', // Centra horizontalmente
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   textcreate: {
     color: 'cyan',
     fontWeight: '700',
-  }
+  },
 });
 
 export default Login;
